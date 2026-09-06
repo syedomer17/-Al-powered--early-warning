@@ -6,28 +6,28 @@
 
 ## 📋 Task Checklist
 
-- [ ] **1.1 Project Setup & Dependencies**
+- [x] **1.1 Project Setup & Dependencies**
   - Install dependencies: `mongoose`, `leaflet`, `@types/leaflet`, `recharts`, `lucide-react`, `clsx`, `tailwind-merge`.
   - Configure `.env.local` with `MONGODB_URI` and optional `AI_API_KEY`.
   - Create database connection singleton in `lib/mongodb.ts`.
 
-- [ ] **1.2 Mongoose Data Models (`models/`)**
+- [x] **1.2 Mongoose Data Models (`models/`)**
   - `models/Zone.ts`: Monitored geographical zone with risk parameters.
   - `models/Incident.ts`: Field/citizen incident reports.
   - `models/Alert.ts`: Automated early warning alerts.
   - `models/SensorData.ts`: Telemetry logs (rainfall, soil moisture, temperature).
   - `models/Road.ts`: Critical transportation routes and blockage statuses.
 
-- [ ] **1.3 Computing Engines (`lib/`)**
+- [x] **1.3 Computing Engines (`lib/`)**
   - `lib/risk-engine.ts`: Core transparent risk formula.
   - `lib/priority-engine.ts`: Emergency response triage ranking algorithm.
 
-- [ ] **1.4 Realistic Northeast India Seed Script (`scripts/seed.ts`)**
+- [x] **1.4 Realistic Northeast India Seed Script (`scripts/seed.ts`)**
   - Populate 20–30 real Northeast India locations (Sohra, Shillong, Gangtok, Mangan, Guwahati, Kohima, Tawang, etc.).
   - Populate 15+ incidents, 8+ alerts, and key road statuses (`NH-6`, `NH-10`, `Tawang Road`).
   - Add npm script: `"seed": "tsx scripts/seed.ts"` (or node runner).
 
-- [ ] **1.5 API Route Handlers (`app/api/`)**
+- [x] **1.5 API Route Handlers (`app/api/`)**
   - `GET /api/zones` & `GET /api/zones/[id]`
   - `GET /api/incidents`, `POST /api/incidents`, `PATCH /api/incidents/[id]`
   - `GET /api/alerts`, `POST /api/alerts`, `PATCH /api/alerts/[id]`

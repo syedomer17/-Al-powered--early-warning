@@ -6,7 +6,7 @@
 
 ## 📋 Task Checklist
 
-- [ ] **2.1 Application Shell & Theme Layout**
+- [x] **2.1 Application Shell & Theme Layout**
   - Dark theme styling with emergency operations aesthetics.
   - Collapsible/persistent navigation sidebar:
     - Dashboard (`/dashboard`)
@@ -23,7 +23,7 @@
     - Live simulation badge: `● SIMULATION MODE`
     - Notification icon & Prototype disclaimer badge.
 
-- [ ] **2.2 Main Command Center Dashboard (`app/dashboard/page.tsx`)**
+- [x] **2.2 Main Command Center Dashboard (`app/dashboard/page.tsx`)**
   - **KPI Summary Cards (6 Cards)**:
     - `CRITICAL ZONES`: 3
     - `HIGH RISK ZONES`: 12
@@ -40,7 +40,7 @@
   - **Blocked Road Monitoring Widget**:
     - List of key roads with status badges (e.g., `NH-6` BLOCKED, `NH-10` PARTIAL, `Tawang Road` OPEN).
 
-- [ ] **2.3 Full-Screen Interactive GIS Risk Map (`app/map/page.tsx`)**
+- [x] **2.3 Full-Screen Interactive GIS Risk Map (`app/map/page.tsx`)**
   - Center coordinates on Northeast India (Lat: 25.5° N, Long: 92.5° E, Zoom: ~7).
   - Map provider: Leaflet with dark OpenStreetMap tiles.
   - Marker / Polygon rendering with risk-level color codes:
@@ -64,7 +64,7 @@
     - [x] Incident Reports
     - [x] Road Blockages
 
-- [ ] **2.4 Public Landing Page (`app/page.tsx`)**
+- [x] **2.4 Public Landing Page (`app/page.tsx`)**
   - Hero section with headline: *"AI-Powered Landslide Early Warning & Response"*.
   - Primary CTA: **Open Command Center** (`/dashboard`).
   - Secondary CTA: **Report an Incident** (`/incidents/report`).
