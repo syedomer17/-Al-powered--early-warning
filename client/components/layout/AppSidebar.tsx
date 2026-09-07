@@ -3,146 +3,32 @@
 import React from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  LayoutDashboard,
-  MapPin,
-  ClipboardList,
-  AlertOctagon,
-  BarChart3,
-  Bot,
-  Settings,
-  ShieldAlert,
-  Flame,
-} from "lucide-react";
+import { LayoutDashboard, MapPin, ClipboardList, AlertOctagon, BarChart3, Bot, Settings, ShieldAlert, Radio } from "lucide-react";
 
-interface NavItem {
-  name: string;
-  href: string;
-  icon: React.ComponentType<{ className?: string }>;
-  badge?: string;
-  badgeColor?: string;
-}
-
-const navItems: NavItem[] = [
-  {
-    name: "Command Center",
-    href: "/dashboard",
-    icon: LayoutDashboard,
-  },
-  {
-    name: "GIS Risk Map",
-    href: "/map",
-    icon: MapPin,
-    badge: "LIVE",
-    badgeColor: "bg-red-500/20 text-red-400 border border-red-500/30",
-  },
-  {
-    name: "Incident Triage",
-    href: "/incidents",
-    icon: ClipboardList,
-    badge: "47",
-    badgeColor: "bg-amber-500/20 text-amber-300 border border-amber-500/30",
-  },
-  {
-    name: "Active Alerts",
-    href: "/alerts",
-    icon: AlertOctagon,
-    badge: "7 CRIT",
-    badgeColor: "bg-red-950 text-red-400 border border-red-700 animate-pulse",
-  },
-  {
-    name: "Risk Analytics",
-    href: "/analytics",
-    icon: BarChart3,
-  },
-  {
-    name: "AI Disaster Intel",
-    href: "/assistant",
-    icon: Bot,
-    badge: "AI",
-    badgeColor: "bg-cyan-500/20 text-cyan-300 border border-cyan-500/30",
-  },
-  {
-    name: "System Settings",
-    href: "/settings",
-    icon: Settings,
-  },
+const navItems = [
+  { name: "Command center", href: "/dashboard", icon: LayoutDashboard },
+  { name: "Risk map", href: "/map", icon: MapPin, badge: "LIVE" },
+  { name: "Incident triage", href: "/incidents", icon: ClipboardList, badge: "47" },
+  { name: "Active alerts", href: "/alerts", icon: AlertOctagon, badge: "7", danger: true },
+  { name: "Risk analytics", href: "/analytics", icon: BarChart3 },
+  { name: "AI disaster intel", href: "/assistant", icon: Bot, badge: "AI" },
+  { name: "System settings", href: "/settings", icon: Settings },
 ];
 
 export function AppSidebar() {
   const pathname = usePathname();
-
   return (
-    <aside className="w-64 shrink-0 hidden lg:flex flex-col border-r border-slate-800 bg-slate-950/80 p-3 justify-between glass-panel rounded-xl ml-2 mb-2">
-      <div className="space-y-4">
-        {/* Operations Hub Banner */}
-        <div className="p-2.5 rounded-lg border border-slate-800 bg-slate-900/60 flex items-center gap-3">
-          <div className="p-2 rounded-md bg-red-950 text-red-400 border border-red-800">
-            <Flame className="w-4 h-4" />
-          </div>
-          <div>
-            <div className="text-xs font-bold text-slate-200">MONSOON 2026</div>
-            <div className="text-[10px] text-slate-400 font-mono">
-              High Risk Surveillance
-            </div>
-          </div>
-        </div>
-
-        {/* Nav links */}
-        <nav className="space-y-1">
-          {navItems.map((item) => {
-            const isActive =
-              pathname === item.href ||
-              (item.href !== "/dashboard" && pathname.startsWith(item.href));
-            const Icon = item.icon;
-
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`flex items-center justify-between px-3 py-2 rounded-md text-xs font-medium transition-all ${
-                  isActive
-                    ? "bg-slate-800 text-white shadow-sm border border-slate-700 font-semibold"
-                    : "text-slate-400 hover:text-slate-200 hover:bg-slate-900/80"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <Icon
-                    className={`w-4 h-4 ${
-                      isActive ? "text-cyan-400" : "text-slate-400"
-                    }`}
-                  />
-                  <span>{item.name}</span>
-                </div>
-                {item.badge && (
-                  <span
-                    className={`text-[9px] font-mono px-1.5 py-0.5 rounded font-bold ${
-                      item.badgeColor || "bg-slate-800 text-slate-300"
-                    }`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </Link>
-            );
-          })}
-        </nav>
+    <aside className="hidden w-64 shrink-0 flex-col border-r border-border/70 bg-sidebar px-3 py-5 lg:flex">
+      <div className="mb-6 rounded-xl border border-border/70 bg-card/60 p-3">
+        <div className="mb-3 flex items-center justify-between"><span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Current operation</span><Radio className="size-3.5 text-primary" /></div>
+        <p className="text-sm font-semibold text-foreground">Monsoon surveillance</p><p className="mt-1 text-xs text-muted-foreground">Northeast region · 2026</p>
+        <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-secondary"><div className="h-full w-[78%] rounded-full bg-primary" /></div><div className="mt-2 flex justify-between text-[10px] text-muted-foreground"><span>Readiness</span><span className="text-primary">78%</span></div>
       </div>
-
-      {/* Emergency Hotline Footer */}
-      <div className="space-y-2 p-3 rounded-lg border border-slate-800 bg-slate-900/40">
-        <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-          <ShieldAlert className="w-4 h-4 text-amber-400" />
-          <span>SDRF / NDRF DISPATCH</span>
-        </div>
-        <p className="text-[10px] text-slate-400 leading-tight">
-          Emergency response units standing by across 8 northeastern states.
-        </p>
-        <div className="flex items-center justify-between pt-1 border-t border-slate-800/80 text-[10px] font-mono text-slate-500">
-          <span>FREQ: 154.650 MHz</span>
-          <span className="text-emerald-400">READY</span>
-        </div>
-      </div>
+      <nav className="flex flex-1 flex-col gap-1" aria-label="Primary navigation">
+        <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">Workspace</p>
+        {navItems.map((item) => { const active = pathname === item.href || (item.href !== "/dashboard" && pathname.startsWith(item.href)); const Icon = item.icon; return <Link key={item.href} href={item.href} className={`flex items-center justify-between rounded-lg px-3 py-2.5 text-sm transition-colors ${active ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-accent hover:text-foreground"}`}><span className="flex items-center gap-3"><Icon className="size-4" />{item.name}</span>{item.badge && <span className={`rounded-full px-2 py-0.5 text-[10px] font-semibold ${item.danger ? "bg-destructive/15 text-destructive" : "bg-secondary text-muted-foreground"}`}>{item.badge}</span>}</Link>; })}
+      </nav>
+      <div className="rounded-xl border border-border/70 bg-card/50 p-3"><div className="flex items-center gap-2 text-xs font-semibold text-foreground"><ShieldAlert className="size-4 text-chart-2" /> Dispatch network</div><p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">SDRF and NDRF units are standing by across 8 states.</p><div className="mt-3 flex items-center justify-between border-t border-border/70 pt-2 text-[10px] text-muted-foreground"><span>154.650 MHz</span><span className="text-primary">READY</span></div></div>
     </aside>
   );
 }

@@ -31,25 +31,25 @@ export default async function DashboardPage() {
   const activeAlerts = alerts.filter((a) => a.status === "ACTIVE");
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-sans relative">
+    <div className="min-h-screen bg-background text-foreground">
       <AppHeader />
 
       <div className="flex-1 flex overflow-hidden max-w-full">
         <AppSidebar />
 
-        <main className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 space-y-5 sm:space-y-6 scroll-smooth">
+        <main className="min-w-0 flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
           {/* Top Banner & Fast Actions */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-4 sm:pb-5 border-b border-slate-800/60 mt-1 sm:mt-0">
+          <div className="mb-6 flex flex-col gap-4 border-b border-border/70 pb-6 md:flex-row md:items-end md:justify-between">
             <div className="space-y-1.5 sm:space-y-2">
               <div className="flex flex-wrap items-center gap-2 sm:gap-3">
-                <h1 className="text-xl sm:text-2xl lg:text-3xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-slate-400">
+                <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                   COMMAND CENTER
                 </h1>
                 <Badge className="bg-red-950/40 text-red-400 border-red-800/50 text-[9px] sm:text-[10px] font-mono animate-pulse shadow-[0_0_10px_rgba(220,38,38,0.3)]">
                   SURVEILLANCE ACTIVE
                 </Badge>
               </div>
-              <p className="text-[11px] sm:text-xs text-cyan-400/80 font-mono tracking-tight leading-relaxed max-w-2xl">
+              <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
                 Real-Time Landslide Early Warning, Geotechnical Telemetry & Emergency Resource Dispatch
               </p>
             </div>
@@ -88,7 +88,7 @@ export default async function DashboardPage() {
           />
 
           {/* Interactive GIS Risk Map Section */}
-          <div className="space-y-3">
+          <div className="mb-6 flex flex-col gap-3">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-1">
               <div className="flex items-center gap-2.5">
                 <div className="p-1.5 bg-cyan-950/50 rounded-md border border-cyan-800/30">
